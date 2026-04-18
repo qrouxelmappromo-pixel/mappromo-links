@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.qrouxel.mappromo",
+      "sha256_cert_fingerprints": [
+        "DB:F3:51:38:1D:B7:E5:13:F5:CE:0F:C5:7B:74:FE:E8:C2:E3:38:BD:84:B9:16:66:7E:1F:C9:6F:12:E7:FA:C4"
+      ]
+    }
+  }
+]
