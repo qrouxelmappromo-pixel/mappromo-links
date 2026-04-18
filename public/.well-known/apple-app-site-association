@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["H7FXMDP92P.com.qrouxel.mappromo"],
+        "components": [
+          { "/": "/offres/*" },
+          { "/": "/commercants/*" },
+          { "/": "/invite/*" },
+          { "/": "/listes/*" }
+        ]
+      }
+    ]
+  }
+}
