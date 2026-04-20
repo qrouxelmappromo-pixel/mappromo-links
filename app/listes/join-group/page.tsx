@@ -1,13 +1,12 @@
-type PageProps = {
-  searchParams?: {
-    groupId?: string;
-    token?: string;
-  };
-};
+"use client";
 
-export default function JoinGroupPage({ searchParams }: PageProps) {
-  const groupId = searchParams?.groupId;
-  const token = searchParams?.token;
+import { useSearchParams } from "next/navigation";
+
+export default function JoinGroupPage() {
+  const searchParams = useSearchParams();
+
+  const groupId = searchParams.get("groupId") ?? "";
+  const token = searchParams.get("token") ?? "";
 
   return (
     <main style={styles.main}>
