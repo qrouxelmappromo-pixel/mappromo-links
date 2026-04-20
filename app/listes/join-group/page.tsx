@@ -1,18 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import type { CSSProperties } from "react";
 
 export default function JoinGroupPage() {
-  const searchParams = useSearchParams();
   const [href, setHref] = useState("");
+  const [groupId, setGroupId] = useState("");
+  const [token, setToken] = useState("");
 
   useEffect(() => {
-    setHref(window.location.href);
-  }, []);
+    const currentHref = window.location.href;
+    const params = new URLSearchParams(window.location.search);
 
-  const groupId = searchParams.get("groupId") ?? "";
-  const token = searchParams.get("token") ?? "";
+    setHref(currentHref);
+    setGroupId(params.get("groupId") ?? "");
+    setToken(params.get("token") ?? "");
+  }, []);
 
   return (
     <main style={styles.main}>
@@ -57,7 +60,7 @@ export default function JoinGroupPage() {
   );
 }
 
-const styles: Record<string, React.CSSProperties> = {
+const styles: Record<string, CSSProperties> = {
   main: {
     minHeight: "100vh",
     display: "flex",
