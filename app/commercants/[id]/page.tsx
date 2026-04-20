@@ -1,13 +1,14 @@
 type Props = {
-  params: { id: string };
-  searchParams?: {
+  params: Promise<{ id: string }>;
+  searchParams?: Promise<{
     offerId?: string;
-  };
+  }>;
 };
 
-export default function CommercantPage({ params, searchParams }: Props) {
-  const { id } = params;
-  const offerId = searchParams?.offerId;
+export default async function CommercantPage({ params, searchParams }: Props) {
+  const { id } = await params;
+  const resolvedSearchParams = searchParams ? await searchParams : undefined;
+  const offerId = resolvedSearchParams?.offerId;
 
   const title = offerId
     ? "Découvre cette offre sur MAP’promo"
