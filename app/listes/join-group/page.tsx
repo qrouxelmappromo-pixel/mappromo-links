@@ -4,15 +4,11 @@ import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 
 export default function JoinGroupPage() {
-  const [href, setHref] = useState("");
   const [groupId, setGroupId] = useState("");
   const [token, setToken] = useState("");
 
   useEffect(() => {
-    const currentHref = window.location.href;
     const params = new URLSearchParams(window.location.search);
-
-    setHref(currentHref);
     setGroupId(params.get("groupId") ?? "");
     setToken(params.get("token") ?? "");
   }, []);
@@ -30,13 +26,10 @@ export default function JoinGroupPage() {
 
         <div style={styles.infoBox}>
           <p style={styles.infoLine}>
-            <strong>URL :</strong> {href || "chargement..."}
+            <strong>Groupe :</strong> {groupId || "non fourni"}
           </p>
           <p style={styles.infoLine}>
-            <strong>groupId :</strong> {groupId || "non fourni"}
-          </p>
-          <p style={styles.infoLine}>
-            <strong>token :</strong> {token || "non fourni"}
+            <strong>Token :</strong> {token || "non fourni"}
           </p>
         </div>
 
@@ -47,7 +40,6 @@ export default function JoinGroupPage() {
           >
             Télécharger sur l’App Store
           </a>
-
           <a
             href="https://play.google.com/store"
             style={{ ...styles.button, ...styles.secondaryButton }}
