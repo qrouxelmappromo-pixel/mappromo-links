@@ -1,9 +1,15 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 export default function JoinGroupPage() {
   const searchParams = useSearchParams();
+  const [href, setHref] = useState("");
+
+  useEffect(() => {
+    setHref(window.location.href);
+  }, []);
 
   const groupId = searchParams.get("groupId") ?? "";
   const token = searchParams.get("token") ?? "";
@@ -21,10 +27,13 @@ export default function JoinGroupPage() {
 
         <div style={styles.infoBox}>
           <p style={styles.infoLine}>
-            <strong>Groupe :</strong> {groupId || "non fourni"}
+            <strong>URL :</strong> {href || "chargement..."}
           </p>
           <p style={styles.infoLine}>
-            <strong>Token :</strong> {token || "non fourni"}
+            <strong>groupId :</strong> {groupId || "non fourni"}
+          </p>
+          <p style={styles.infoLine}>
+            <strong>token :</strong> {token || "non fourni"}
           </p>
         </div>
 
