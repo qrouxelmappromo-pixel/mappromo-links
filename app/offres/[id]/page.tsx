@@ -1,16 +1,14 @@
-type Props = {
-  params: Promise<{ id: string }>;
-};
-
-export default async function OfferPage({ params }: Props) {
-  const { id } = await params;
-
+export default function OfferPage() {
   return (
     <main style={styles.page}>
       <div style={styles.card}>
         <div style={styles.badge}>Offre MAP’promo</div>
+
         <h1 style={styles.title}>Cette offre est disponible dans l’application</h1>
-        <p style={styles.text}>Référence offre : #{id}</p>
+        <p style={styles.text}>
+          Télécharge MAP’promo pour consulter cette offre et profiter des bons
+          plans autour de toi.
+        </p>
 
         <div style={styles.actions}>
           <a style={styles.primary} href="https://apps.apple.com/">
@@ -32,7 +30,8 @@ const styles: Record<string, React.CSSProperties> = {
     alignItems: "center",
     justifyContent: "center",
     padding: 24,
-    background: "#f7f7f8",
+    background:
+      "linear-gradient(135deg, rgba(0,134,139,0.08), rgba(225,29,72,0.08))",
     color: "#111827",
     fontFamily:
       "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
@@ -44,6 +43,7 @@ const styles: Record<string, React.CSSProperties> = {
     borderRadius: 24,
     padding: 32,
     boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+    textAlign: "center",
   },
   badge: {
     display: "inline-block",
@@ -54,9 +54,24 @@ const styles: Record<string, React.CSSProperties> = {
     color: "#00868B",
     fontWeight: 700,
   },
-  title: { margin: 0, fontSize: 34, lineHeight: 1.1 },
-  text: { marginTop: 16, fontSize: 17, lineHeight: 1.6, color: "#4b5563" },
-  actions: { display: "flex", gap: 12, flexWrap: "wrap", marginTop: 24 },
+  title: {
+    margin: 0,
+    fontSize: 34,
+    lineHeight: 1.1,
+  },
+  text: {
+    marginTop: 16,
+    fontSize: 17,
+    lineHeight: 1.6,
+    color: "#4b5563",
+  },
+  actions: {
+    display: "flex",
+    gap: 12,
+    flexWrap: "wrap",
+    justifyContent: "center",
+    marginTop: 24,
+  },
   primary: {
     background: "#00868B",
     color: "white",
