@@ -1,14 +1,16 @@
-type Props = {
-  params: Promise<{ id: string }>;
-  searchParams?: Promise<{
-    offerId?: string;
-  }>;
-};
+"use client";
 
-export default async function CommercantPage({ params, searchParams }: Props) {
-  const { id } = await params;
-  const resolvedSearchParams = searchParams ? await searchParams : undefined;
-  const offerId = resolvedSearchParams?.offerId;
+import { useParams, useSearchParams } from "next/navigation";
+
+export default function CommercantPage() {
+  const params = useParams();
+  const searchParams = useSearchParams();
+
+  const rawId = params?.id;
+  const id = Array.isArray(rawId) ? rawId[0] : rawId ?? "";
+
+  const rawOfferId = searchParams.get("offerId");
+  const offerId = rawOfferId ?? "";
 
   const title = offerId
     ? "Découvre cette offre sur MAP’promo"
