@@ -1,18 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import type { CSSProperties } from "react";
 
 export default function JoinGroupPage() {
-  const [groupId, setGroupId] = useState("");
-  const [token, setToken] = useState("");
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    setGroupId(params.get("groupId") ?? "");
-    setToken(params.get("token") ?? "");
-  }, []);
-
   return (
     <main style={styles.main}>
       <div style={styles.card}>
@@ -23,15 +13,6 @@ export default function JoinGroupPage() {
           Un groupe t’a été partagé. Télécharge MAP’promo pour rejoindre ce
           groupe et accéder aux listes associées.
         </p>
-
-        <div style={styles.infoBox}>
-          <p style={styles.infoLine}>
-            <strong>Groupe :</strong> {groupId || "non fourni"}
-          </p>
-          <p style={styles.infoLine}>
-            <strong>Token :</strong> {token || "non fourni"}
-          </p>
-        </div>
 
         <div style={styles.buttons}>
           <a
@@ -94,20 +75,6 @@ const styles: Record<string, CSSProperties> = {
     fontSize: "16px",
     lineHeight: 1.6,
     color: "#4B5563",
-  },
-  infoBox: {
-    textAlign: "left",
-    background: "#F9FAFB",
-    border: "1px solid #E5E7EB",
-    borderRadius: "16px",
-    padding: "16px",
-    marginBottom: "24px",
-  },
-  infoLine: {
-    margin: "0 0 8px",
-    color: "#111827",
-    fontSize: "15px",
-    wordBreak: "break-word",
   },
   buttons: {
     display: "flex",

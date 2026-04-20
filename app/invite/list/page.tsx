@@ -1,12 +1,4 @@
-type PageProps = {
-  searchParams?: {
-    token?: string;
-  };
-};
-
-export default function InviteListPage({ searchParams }: PageProps) {
-  const token = searchParams?.token;
-
+export default function InviteListPage() {
   return (
     <main style={styles.main}>
       <div style={styles.card}>
@@ -17,12 +9,6 @@ export default function InviteListPage({ searchParams }: PageProps) {
           Quelqu’un t’a invité à rejoindre une liste sur MAP’promo. Télécharge
           l’application pour accepter l’invitation.
         </p>
-
-        <div style={styles.infoBox}>
-          <p style={styles.infoLine}>
-            <strong>Token :</strong> {token || "non fourni"}
-          </p>
-        </div>
 
         <div style={styles.buttons}>
           <a
@@ -86,20 +72,6 @@ const styles: Record<string, React.CSSProperties> = {
     fontSize: "16px",
     lineHeight: 1.6,
     color: "#4B5563",
-  },
-  infoBox: {
-    textAlign: "left",
-    background: "#F9FAFB",
-    border: "1px solid #E5E7EB",
-    borderRadius: "16px",
-    padding: "16px",
-    marginBottom: "24px",
-  },
-  infoLine: {
-    margin: 0,
-    color: "#111827",
-    fontSize: "15px",
-    wordBreak: "break-word",
   },
   buttons: {
     display: "flex",

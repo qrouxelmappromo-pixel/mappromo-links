@@ -1,16 +1,11 @@
 "use client";
 
-import { useParams, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 export default function CommercantPage() {
-  const params = useParams();
   const searchParams = useSearchParams();
 
-  const rawId = params?.id;
-  const id = Array.isArray(rawId) ? rawId[0] : rawId ?? "";
-
-  const rawOfferId = searchParams.get("offerId");
-  const offerId = rawOfferId ?? "";
+  const offerId = searchParams.get("offerId");
 
   const title = offerId
     ? "Découvre cette offre sur MAP’promo"
@@ -27,17 +22,6 @@ export default function CommercantPage() {
 
         <h1 style={styles.title}>{title}</h1>
         <p style={styles.text}>{text}</p>
-
-        <div style={styles.infoBox}>
-          <p style={styles.infoLine}>
-            <strong>Commerçant :</strong> #{id}
-          </p>
-          {offerId ? (
-            <p style={styles.infoLine}>
-              <strong>Offre liée :</strong> #{offerId}
-            </p>
-          ) : null}
-        </div>
 
         <div style={styles.actions}>
           <a style={styles.primary} href="https://apps.apple.com/">
@@ -71,6 +55,7 @@ const styles: Record<string, React.CSSProperties> = {
     borderRadius: 24,
     padding: 32,
     boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+    textAlign: "center",
   },
   badge: {
     display: "inline-block",
@@ -92,22 +77,11 @@ const styles: Record<string, React.CSSProperties> = {
     lineHeight: 1.6,
     color: "#4b5563",
   },
-  infoBox: {
-    marginTop: 20,
-    padding: 16,
-    borderRadius: 16,
-    background: "#f9fafb",
-    border: "1px solid #e5e7eb",
-  },
-  infoLine: {
-    margin: "0 0 8px 0",
-    fontSize: 15,
-    color: "#111827",
-  },
   actions: {
     display: "flex",
     gap: 12,
     flexWrap: "wrap",
+    justifyContent: "center",
     marginTop: 24,
   },
   primary: {
